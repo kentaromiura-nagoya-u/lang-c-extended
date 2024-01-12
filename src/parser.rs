@@ -256,11 +256,11 @@ fn __parse_identifier0<'input>(__input: &'input str, __state: &mut ParseState<'i
                             let __step_res = if __input.len() > __pos {
                                 let (__ch, __next) = char_range_at(__input, __pos);
                                 match __ch {
-                                    '_' | 'a'...'z' | 'A'...'Z' | '0'...'9' => Matched(__next, ()),
-                                    _ => __state.mark_failure(__pos, "[_a-zA-Z0-9]"),
+                                    '_' | 'a'...'z' | 'A'...'Z' | '0'...'9' | '$' => Matched(__next, ()),
+                                    _ => __state.mark_failure(__pos, "[_a-zA-Z0-9$]"),
                                 }
                             } else {
-                                __state.mark_failure(__pos, "[_a-zA-Z0-9]")
+                                __state.mark_failure(__pos, "[_a-zA-Z0-9$]")
                             };
                             match __step_res {
                                 Matched(__newpos, __value) => {
